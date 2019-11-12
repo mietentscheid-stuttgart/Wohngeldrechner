@@ -1,0 +1,26 @@
+{
+  "name": "wohngeldrechner",
+  "version": "1.0.0",
+  "description": "Mietentscheid Stuttgart - Wohngeldrechner",
+  "main": "index.js",
+  "scripts": {
+    "build": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mietentscheid-stuttgart/Wohngeldrechner.git"
+  },
+  "author": "André Herbst",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/mietentscheid-stuttgart/Wohngeldrechner/issues"
+  },
+  "homepage": "https://github.com/mietentscheid-stuttgart/Wohngeldrechner#readme",
+  "dependencies": {
+    "jstransformer-pug": "^0.3.0",
+    "metalsmith": "^2.3.0",
+    "metalsmith-layouts": "^2.3.1",
+    "metalsmith-pug": "^2.0.0"
+  }
+}
