@@ -21,5 +21,5 @@ Verzeichnisstruktur:
 source/     - .pug Datei(en) mit Content - jeder ist ein Layout zugeordnet
     index.puq
 layout/     - vorhandene .pug Layouts, in denen der Content eingebettet wird
-build/      - wird durch **Build** erzeugt und enthält die resultierenden *.html Dateien
+build/      - wird erzeugt und enthält die resultierenden *.html Dateien
 ```
