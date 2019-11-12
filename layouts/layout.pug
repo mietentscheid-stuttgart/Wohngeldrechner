@@ -1,9 +1,15 @@
+doctype html
 html
 	head
 		title
 			Mietentscheid Stuttgart - Wohngeldrechner
 
 	body
-		p Common heading layout goes here...
-		p !{contents}
-		p Common footer layout goed here...
+		block header
+			p Main page
+
+		block content
+			p !{contents}
+
+		block footer
+			a(href='https://www.mietentscheid-stuttgart.de') Mietentscheid Stuttgart
