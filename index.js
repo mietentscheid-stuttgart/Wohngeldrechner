@@ -1,12 +1,13 @@
 var Metalsmith = require('metalsmith');
-var pug = require('metalsmith-pug');
 var layouts = require('metalsmith-layouts');
+var pug = require('metalsmith-pug');
 
 Metalsmith(__dirname)
-	.source('source')
+	.source('src')
 	.destination('build')
 	.use(pug())
 	.use(layouts({
+		directory: 'layouts',
 		engine: 'pug'
 	}))
 	.build(function(err, files) {
