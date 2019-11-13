@@ -1,4 +1,4 @@
-# Wohngeldrechner
+# Wohnberechtigungsschein-Rechner
 
 ## Build
 1. [nodejs](https://nodejs.org/en/download/) installieren, falls nicht vorhanden
