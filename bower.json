@@ -1,0 +1,21 @@
+{
+  "name": "wohngeldrechner",
+  "description": "Mietentscheid Stuttgart - Wohngeldrechner",
+  "main": "index.js",
+  "authors": [
+    "André Herbst"
+  ],
+  "license": "GPL-3.0-or-later",
+  "homepage": "https://github.com/mietentscheid-stuttgart/wohnberechtigungsschein-rechner",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery-ui": "^1.12.1"
+  }
+}
