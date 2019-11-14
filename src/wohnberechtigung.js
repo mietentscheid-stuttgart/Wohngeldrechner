@@ -1,5 +1,5 @@
 // Quelle: https://www.stuttgart.de/hoechstmieten
-class Sozialwohnung2019 {
+class SozialWohnung2019 {
 	maxEinkommenNachPersonen = {
 		1:	21730,
 		2:	28885,
@@ -8,15 +8,20 @@ class Sozialwohnung2019 {
 		5:	54040
 	}
 
-	istHaushaltBerechtigt(anzahlPersonen, einkommen) {
-		var index = Math.min(5, anzahlPersonen);
+	constructor(anzahlPersonen, einkommen) {
+		this.anzahlPersonen = anzahlPersonen;
+		this.einkommen = einkommen;
+	}
 
-		return einkommen <= this.maxEinkommenNachPersonen[index];
+	istBerechtigt() {
+		var index = Math.min(5, this.anzahlPersonen);
+
+		return this.einkommen <= this.maxEinkommenNachPersonen[index];
 	}
 }
 
 // Quelle: https://www.stuttgart.de/item/show/170044
-class MietwohnungMittleresEinkommen2019 {
+class WohnungMittleresEinkommen2019 {
 	maxEinkommenNachPersonen = {
 		1:	43010,
 		2:	57800,
@@ -25,10 +30,15 @@ class MietwohnungMittleresEinkommen2019 {
 		5:	84800
 	}
 
-	istHaushaltBerechtigt(anzahlPersonen, einkommen) {
-		var index = Math.min(5, anzahlPersonen);
+	constructor(anzahlPersonen, einkommen) {
+		this.anzahlPersonen = anzahlPersonen;
+		this.einkommen = einkommen;
+	}
 
-		return einkommen <= this.maxEinkommenNachPersonen[index];
+	istBerechtigt() {
+		var index = Math.min(5, this.anzahlPersonen);
+
+		return this.einkommen <= this.maxEinkommenNachPersonen[index];
 	}
 }
 

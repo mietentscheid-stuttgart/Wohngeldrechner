@@ -4,58 +4,103 @@ layout:	mietentscheid-stuttgart.pug
 
 script(language="JavaScript" src="wohnberechtigung.js")
 
-p
-	label(for="anzahlPersonen") Anzahl Personen im Haushalt: 
-	input#anzahlPersonen(type="text" value="1")
-	div#anzahlPersonenSlider
+div#tabs
+	ul
+		li
+			a(href="#tabs-1") Fragen
+		li
+			a(href="#tabs-2") Auswertung
 
-p
-	label(for="einkommen") Gesamteinkommen Haushalt:
-	input#einkommen(type="text" value="0 €")
-	div#einkommenSlider
+	div#tabs-1
+		p
+			label(for="anzahlPersonen") Anzahl Personen im Haushalt: 
+			input#anzahlPersonen(type="text" value="1")
+			div#anzahlPersonenSlider
+
+		p
+			label(for="einkommen") Gesamteinkommen Haushalt:
+			input#einkommen(type="text" value="0 €")
+			div#einkommenSlider
+
+		p
+			button#weiter-1 Weiter
+
+	div#tabs-2
+		p
+			input#sozialWohnung(type="checkbox")
+			span Recht auf eine Sozialwohnung
+		p
+			input#wohnungMittleresEinkommen(type="checkbox")
+			span Recht auf eine geförderte Wohnung für mittlere Einkommen
+			
 
 script(language="JavaScript").
+	function einkommenInEuro(value) {
+		var f = parseInt(value);
+		return f + " €";
+	}
+
 	$( function() {
-			function einkommenInEuro(value) {
-				var f = parseInt(value);
-				return f + " €";
-			}
+		function presentResults() {
+			var anzahlPersonen = parseInt( $( "#anzahlPersonen" ).val() );
+			var einkommen = parseInt( $( "#einkommen" ).val() );
 
-			function linkInputToSlider(inputId, sliderId, defaultValue, formatValue = (v) => v) {
-				$( "#" + sliderId ).slider( "option", "slide", function( event, ui ) {
-					// apply slider value to input
-					$( "#" + inputId ).val( formatValue(ui.value) );
-				});
+			if (isNaN(anzahlPersonen) || isNaN(einkommen))
+				return;
 
-				// initialize slider with input value
-				$( "#" + sliderId ).slider( "option", "value", parseInt( $( "#" + inputId ).val() ) );
+			var sozialWohnung = new SozialWohnung2019(anzahlPersonen, einkommen);
+			var wohnungMittleresEinkommen = new WohnungMittleresEinkommen2019(anzahlPersonen, einkommen);
 
-				$( "#" + inputId ).change( function( event ) {
-					// parse and validate value
-					var value = parseInt( $( "#" + inputId ).val() )
-					if (isNaN(value) || value < 0)
-						value = defaultValue;
+			// update checkboxes according to result
+			$( "#sozialWohnung" ).attr( "checked", sozialWohnung.istBerechtigt() );			
+			$( "#wohnungMittleresEinkommen" ).attr( "checked", wohnungMittleresEinkommen.istBerechtigt() );			
+			$( "#tabs" ).tabs( "option", "active", 1 );
+		}
 
-					// apply value to input and slider
-					$( "#" + inputId ).val( formatValue(value) )
-					$( "#" + sliderId ).slider( "option", "value", value );
-				} );
-
-			}
-
-			$( "#anzahlPersonenSlider" ).slider({
-				value:	1,
-				min:	1,
-				max:	5,
-				step:	1
+		function linkInputToSlider(inputId, sliderId, defaultValue, formatValue = (v) => v) {
+			$( "#" + sliderId ).slider( "option", "slide", function( event, ui ) {
+				// apply slider value to input
+				$( "#" + inputId ).val( formatValue(ui.value) );
 			});
-			linkInputToSlider("anzahlPersonen", "anzahlPersonenSlider", 1);
 
-			$( "#einkommenSlider" ).slider({
-				value:	0,
-				min:	0,
-				max:	70000,
-				step:	100,
-			});
-			linkInputToSlider("einkommen", "einkommenSlider", 0, (v) => v + " €");
+			// initialize slider with input value
+			$( "#" + sliderId ).slider( "option", "value", parseInt( $( "#" + inputId ).val() ) );
+
+			$( "#" + inputId ).change( function( event ) {
+				// parse and validate value
+				var value = parseInt( $( "#" + inputId ).val() )
+				if (isNaN(value) || value < 0)
+					value = defaultValue;
+
+				// apply value to input and slider
+				$( "#" + inputId ).val( formatValue(value) )
+				$( "#" + sliderId ).slider( "option", "value", value );
+			} );
+
+		}
+
+		$( "#anzahlPersonenSlider" ).slider({
+			value:	1,
+			min:	1,
+			max:	5,
+			step:	1
+		});
+		linkInputToSlider("anzahlPersonen", "anzahlPersonenSlider", 1);
+
+		$( "#einkommenSlider" ).slider({
+			value:	0,
+			min:	0,
+			max:	70000,
+			step:	100,
+		});
+		linkInputToSlider("einkommen", "einkommenSlider", 0, (v) => v + " €");
+
+		$( "#tabs" ).tabs();
+		$( "#tabs" ).on( "tabsactivate", function( event, ui ) {
+			if (ui.newPanel[0].id == "tabs-2")
+				presentResults();
+		});
+		$( "#weiter-1" ).click( function() {
+			presentResults();
+		});
 	} );
