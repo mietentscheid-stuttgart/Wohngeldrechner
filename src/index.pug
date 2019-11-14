@@ -3,4 +3,59 @@ layout:	mietentscheid-stuttgart.pug
 ---
 
 script(language="JavaScript" src="wohnberechtigung.js")
-p Hello world content!
+
+p
+	label(for="anzahlPersonen") Anzahl Personen im Haushalt: 
+	input#anzahlPersonen(type="text" value="1")
+	div#anzahlPersonenSlider
+
+p
+	label(for="einkommen") Gesamteinkommen Haushalt:
+	input#einkommen(type="text" value="0 €")
+	div#einkommenSlider
+
+script(language="JavaScript").
+	$( function() {
+			function einkommenInEuro(value) {
+				var f = parseInt(value);
+				return f + " €";
+			}
+
+			function linkInputToSlider(inputId, sliderId, defaultValue, formatValue = (v) => v) {
+				$( "#" + sliderId ).slider( "option", "slide", function( event, ui ) {
+					// apply slider value to input
+					$( "#" + inputId ).val( formatValue(ui.value) );
+				});
+
+				// initialize slider with input value
+				$( "#" + sliderId ).slider( "option", "value", parseInt( $( "#" + inputId ).val() ) );
+
+				$( "#" + inputId ).change( function( event ) {
+					// parse and validate value
+					var value = parseInt( $( "#" + inputId ).val() )
+					if (isNaN(value) || value < 0)
+						value = defaultValue;
+
+					// apply value to input and slider
+					$( "#" + inputId ).val( formatValue(value) )
+					$( "#" + sliderId ).slider( "option", "value", value );
+				} );
+
+			}
+
+			$( "#anzahlPersonenSlider" ).slider({
+				value:	1,
+				min:	1,
+				max:	5,
+				step:	1
+			});
+			linkInputToSlider("anzahlPersonen", "anzahlPersonenSlider", 1);
+
+			$( "#einkommenSlider" ).slider({
+				value:	0,
+				min:	0,
+				max:	70000,
+				step:	100,
+			});
+			linkInputToSlider("einkommen", "einkommenSlider", 0, (v) => v + " €");
+	} );
