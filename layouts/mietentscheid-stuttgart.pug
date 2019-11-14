@@ -270,7 +270,11 @@ block body
 												a(href="https://www.mietentscheid-stuttgart.de/kontakt/") Kontakt
 
 			block content
-				section(class="oct-main-section" role="main") !{contents}
+				section(class="oct-main-section" role="main")
+					div(class="container")
+						div(class="row")
+							div(class="col-sm-12 col-md-8 col-lg-9")
+								div(class="oct-card") !{contents}
 
 			block footer
 				footer(id="oct-site-footer" class="footer-section bg-with-black")

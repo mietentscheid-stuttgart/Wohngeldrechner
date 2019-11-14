@@ -3,6 +3,14 @@ layout:	mietentscheid-stuttgart.pug
 ---
 
 script(language="JavaScript" src="wohnberechtigung.js")
+style.
+	div#tabs {
+		min-height: 275px
+	}
+
+	div#tabs input,span {
+		margin-left: 15px
+	}
 
 div#tabs
 	ul
@@ -23,7 +31,7 @@ div#tabs
 			div#einkommenSlider
 
 		p
-			button#weiter-1 Weiter
+			button#weiter-1(class="ui-button") Weiter
 
 	div#tabs-2
 		p
@@ -32,7 +40,6 @@ div#tabs
 		p
 			input#wohnungMittleresEinkommen(type="checkbox")
 			span Recht auf eine geförderte Wohnung für mittlere Einkommen
-			
 
 script(language="JavaScript").
 	function einkommenInEuro(value) {
