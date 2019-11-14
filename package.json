@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/mietentscheid-stuttgart/Wohngeldrechner#readme",
   "dependencies": {
+    "bower": "^1.8.8",
     "jstransformer-pug": "^0.3.0",
     "metalsmith": "^2.3.0",
     "metalsmith-layouts": "^2.3.1",
