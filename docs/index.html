@@ -84,7 +84,7 @@ body {color:#313131;}.onecom-webshop-main svg {fill:#313131;}#page{background-co
 div#tabs input,span {
 	margin-left: 15px
 }
-</style><div id="tabs"><ul><li><a href="#tabs-1">Fragen</a></li><li><a href="#tabs-2">Auswertung</a></li></ul><div id="tabs-1"><p><label for="anzahlPersonen">Anzahl Personen im Haushalt: </label><input id="anzahlPersonen" type="text" value="1"/><div id="anzahlPersonenSlider"></div></p><p><label for="einkommen">Gesamteinkommen Haushalt:</label><input id="einkommen" type="text" value="0 €"/><div id="einkommenSlider"></div></p><p><button class="ui-button" id="weiter-1">Weiter</button></p></div><div id="tabs-2"><p><input id="sozialWohnung" type="checkbox"/><span>Recht auf eine Sozialwohnung</span></p><p><input id="wohnungMittleresEinkommen" type="checkbox"/><span>Recht auf eine geförderte Wohnung für mittlere Einkommen</span></p></div></div><script language="JavaScript">function einkommenInEuro(value) {
+</style><div id="tabs"><ul><li><a href="#tabs-1">Fragen</a></li><li><a href="#tabs-2">Auswertung</a></li></ul><div id="tabs-1"><p><label for="anzahlPersonen">Anzahl Personen im Haushalt: </label><input id="anzahlPersonen" type="text" value="1"/><div id="anzahlPersonenSlider"></div></p><p><label for="einkommen">Gesamteinkommen Haushalt:</label><input id="einkommen" type="text" value="0 €"/><div id="einkommenSlider"></div></p><p><button class="ui-button" id="weiter-1">Weiter</button></p></div><div id="tabs-2"><p><input id="sozialWohnung" type="checkbox" disabled="disabled"/><span>Recht auf eine Sozialwohnung</span></p><p><input id="wohnungMittleresEinkommen" type="checkbox" disabled="disabled"/><span>Recht auf eine geförderte Wohnung für mittlere Einkommen</span></p></div></div><script language="JavaScript">function einkommenInEuro(value) {
 	var f = parseInt(value);
 	return f + " €";
 }
@@ -101,8 +101,8 @@ $( function() {
 		var wohnungMittleresEinkommen = new WohnungMittleresEinkommen2019(anzahlPersonen, einkommen);
 
 		// update checkboxes according to result
-		$( "#sozialWohnung" ).attr( "checked", sozialWohnung.istBerechtigt() );			
-		$( "#wohnungMittleresEinkommen" ).attr( "checked", wohnungMittleresEinkommen.istBerechtigt() );			
+		$( "#sozialWohnung" ).prop( "checked", sozialWohnung.istBerechtigt() );			
+		$( "#wohnungMittleresEinkommen" ).prop( "checked", wohnungMittleresEinkommen.istBerechtigt() );			
 		$( "#tabs" ).tabs( "option", "active", 1 );
 	}
 
