@@ -4,10 +4,10 @@
   "description": "Mietentscheid Stuttgart - Wohngeldrechner",
   "main": "index.js",
   "scripts": {
+    "install": "node node_modules/bower/bin/bower install",
     "build": "node index.js",
     "build:nodemon": "nodemon -e js,css,html,pug -w src -w layouts index.js",
-    "dist:ghpages": "node index.js && cp -r build/. docs/",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dist:ghpages": "node index.js && cp -r build/. docs/"
   },
   "repository": {
     "type": "git",

@@ -6,12 +6,17 @@
 2. abhängige Pakete installieren
 ```
 npm install
-node node_modules/bower/bin/bower install
 ```
 
 3. Webseite in *build/* Ordner erzeugen
 ```
 npm run-script build
+```
+
+## Developement
+1. Webseite bei Dateiänderung automatisch in *build/* neu erzeugen
+```
+npm run-script build:nodemon
 ```
 
 ## Anpassen
