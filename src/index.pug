@@ -55,8 +55,8 @@ script(language="JavaScript").
 			if (isNaN(anzahlPersonen) || isNaN(einkommen))
 				return;
 
-			var sozialWohnung = new SozialWohnung2019(anzahlPersonen, einkommen);
-			var wohnungMittleresEinkommen = new WohnungMittleresEinkommen2019(anzahlPersonen, einkommen);
+			var sozialWohnung = new SozialWohnung2020(anzahlPersonen, einkommen);
+			var wohnungMittleresEinkommen = new WohnungMittleresEinkommen2020(anzahlPersonen, einkommen);
 
 			// update checkboxes according to result
 			$( "#sozialWohnung" ).prop( "checked", sozialWohnung.istBerechtigt() );			

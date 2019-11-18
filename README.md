@@ -13,13 +13,26 @@ npm install
 npm run-script build
 ```
 
+4.
+```
+firefox build/index.html
+```
+
 ## Developement
 1. Webseite bei Dateiänderung automatisch in *build/* neu erzeugen
 ```
 npm run-script build:nodemon
 ```
 
-## Anpassen
+2. Änderungen vornehmen
+
+3.
+```
+firefox build/index.html
+```
+oder im bereits offenen Browser Aktualisieren
+
+
 Diese Seite benutzt [metalsmith](https://github.com/segmentio/metalsmith). Content sowie layouts sind im  [pug](https://pugjs.org) Format gepflegt, welches deutlich leichter zu lesen und zu schreiben ist. Die daraus resultierenden HTML Dateien werden automatisch erzeugt.
 
 Verzeichnisstruktur:
