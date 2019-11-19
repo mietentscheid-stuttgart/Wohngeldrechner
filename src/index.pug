@@ -18,6 +18,8 @@ div#tabs
 			a(href="#tabs-1") Fragen
 		li
 			a(href="#tabs-2") Auswertung
+		li
+			a(href="#tabs-3") Plot
 
 	div#tabs-1
 		p
@@ -41,6 +43,14 @@ div#tabs
 			input#wohnungMittleresEinkommen(type="checkbox" disabled)
 			span Recht auf eine geförderte Wohnung für mittlere Einkommen
 
+		p
+			button#weiter-2(class="ui-button") Weiter
+
+	div#tabs-3
+		p
+			h3 Beispielgrafik dynamisch generiert
+			div#plot
+
 script(language="JavaScript").
 	function einkommenInEuro(value) {
 		var f = parseInt(value);
@@ -48,6 +58,7 @@ script(language="JavaScript").
 	}
 
 	$( function() {
+		// calculator
 		function presentResults() {
 			var anzahlPersonen = parseInt( $( "#anzahlPersonen" ).val() );
 			var einkommen = parseInt( $( "#einkommen" ).val() );
@@ -60,10 +71,10 @@ script(language="JavaScript").
 
 			// update checkboxes according to result
 			$( "#sozialWohnung" ).prop( "checked", sozialWohnung.istBerechtigt() );			
-			$( "#wohnungMittleresEinkommen" ).prop( "checked", wohnungMittleresEinkommen.istBerechtigt() );			
-			$( "#tabs" ).tabs( "option", "active", 1 );
+			$( "#wohnungMittleresEinkommen" ).prop( "checked", wohnungMittleresEinkommen.istBerechtigt() );
 		}
 
+		// tab 1 controls
 		function linkInputToSlider(inputId, sliderId, defaultValue, formatValue = (v) => v) {
 			$( "#" + sliderId ).slider( "option", "slide", function( event, ui ) {
 				// apply slider value to input
@@ -102,12 +113,18 @@ script(language="JavaScript").
 		});
 		linkInputToSlider("einkommen", "einkommenSlider", 0, (v) => v + " €");
 
+		// tabs and buttons
 		$( "#tabs" ).tabs();
 		$( "#tabs" ).on( "tabsactivate", function( event, ui ) {
 			if (ui.newPanel[0].id == "tabs-2")
 				presentResults();
+			if (ui.newPanel[0].id == "tabs-3")
+				$.jqplot('plot',  [[[1, 2],[3,5.12],[5,13.1],[7,33.6],[9,85.9],[11,219.9]]]);
 		});
 		$( "#weiter-1" ).click( function() {
-			presentResults();
+			$( "#tabs" ).tabs( "option", "active", 1 );
+		});
+		$( "#weiter-2" ).click( function() {
+			$( "#tabs" ).tabs( "option", "active", 2 );
 		});
 	} );
