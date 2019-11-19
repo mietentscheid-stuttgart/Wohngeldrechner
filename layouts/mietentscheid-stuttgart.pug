@@ -1,4 +1,4 @@
-extends layout-with-jquery-ui.pug
+extends layout-with-js-dependencies.pug
 
 block append defines
 	- htmlClasses += ' no-svg js canvas canvastext no-touch opacity' 
@@ -171,6 +171,8 @@ block body
 			block header
 				script(language="JavaScript" src="bower_components/jquery/dist/jquery.min.js")
 				script(language="JavaScript" src="bower_components/jquery-ui/jquery-ui.min.js")
+
+				script(language="JavaScript" src="bower_components/jqplot-bower/dist/jquery.jqplot.min.js")
 
 				section(class="oct-head-bar")
 					div(class="container")
