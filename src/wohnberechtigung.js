@@ -1,4 +1,4 @@
-// Quelle: https://www.stuttgart.de/hoechstmieten
+// Quelle: Amt für Stadtplanung und Wohnen, Stuttgart - 12.02.2019
 class SozialWohnung2020 {
 	constructor(anzahlPersonen, einkommen) {
 		this.maxEinkommenNachPersonen = {
@@ -20,11 +20,10 @@ class SozialWohnung2020 {
 	}
 }
 
-// Quelle: https://www.stuttgart.de/item/show/170044
 class WohnungMittleresEinkommen2020 {
 	constructor(anzahlPersonen, einkommen) {
 		this.maxEinkommenNachPersonen = {
-			1:	43000,
+			1:	43010,
 			2:	57800,
 			3:	66800,
 			4:	75800,
