@@ -41,3 +41,17 @@ class WohnungMittleresEinkommen2020 {
 	}
 }
 
+class WohnungStatistiken {
+	constructor() {
+		this.anzahl = 	[ 209000, 
+				104500,
+				5873, 
+				736 ];
+
+		this.titel =	[ "Mieterhaushalte in Stuttgart",
+				"Förderfähige Haushalte\n(Wohnberechtigungsschein)",
+				"Ausgestellte Wohnberechtigungsscheine\n(2016)",
+				"Tatsächlich neu bezogene\niSozialwohnungen (2016)" ];
+		
+	}
+}

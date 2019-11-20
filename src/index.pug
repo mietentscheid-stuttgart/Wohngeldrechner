@@ -19,7 +19,7 @@ div#tabs
 		li
 			a(href="#tabs-2") Auswertung
 		li
-			a(href="#tabs-3") Plot
+			a(href="#tabs-3") Fakten
 
 	div#tabs-1
 		p
@@ -48,8 +48,10 @@ div#tabs
 
 	div#tabs-3
 		p
-			h3 Beispielgrafik dynamisch generiert
+			h3 Fakten
 			div#plot
+			span Quelle: 
+			a(href="https://www.stuttgarter-nachrichten.de/inhalt.sozialmietwohnungen-in-stuttgart-stadt-stuttgart-lockert-vorgaben-fuer-vermieter.42647419-19b0-45e5-a830-65797e398fde.html") Stuttgarter Nachrichten
 
 script(language="JavaScript").
 	function einkommenInEuro(value) {
@@ -72,6 +74,28 @@ script(language="JavaScript").
 			// update checkboxes according to result
 			$( "#sozialWohnung" ).prop( "checked", sozialWohnung.istBerechtigt() );			
 			$( "#wohnungMittleresEinkommen" ).prop( "checked", wohnungMittleresEinkommen.istBerechtigt() );
+		}
+
+		// plot
+		function presentPlot() {
+			var statistik = new WohnungStatistiken();
+
+			$.jqplot.config.enablePlugins = true;
+			$.jqplot('plot', [statistik.anzahl], {
+				seriesDefaults:	{
+					renderer: $.jqplot.BarRenderer,
+					// rendererOptions: { barWidth: 30 },
+					pointLabels: { show: true }
+				},
+				axes: {
+					xaxis: {
+						renderer: $.jqplot.CategoryAxisRenderer,
+						min:	0,
+						max:	5,
+						ticks:	statistik.titel
+					}
+				}
+			} );
 		}
 
 		// tab 1 controls
@@ -119,7 +143,7 @@ script(language="JavaScript").
 			if (ui.newPanel[0].id == "tabs-2")
 				presentResults();
 			if (ui.newPanel[0].id == "tabs-3")
-				$.jqplot('plot',  [[[1, 2],[3,5.12],[5,13.1],[7,33.6],[9,85.9],[11,219.9]]]);
+				presentPlot();
 		});
 		$( "#weiter-1" ).click( function() {
 			$( "#tabs" ).tabs( "option", "active", 1 );
