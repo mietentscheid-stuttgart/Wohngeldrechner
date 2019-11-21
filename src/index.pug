@@ -12,25 +12,56 @@ style.
 		margin-left: 15px
 	}
 
+	li.ui-tabs-active.mietentscheid-tabs-tab {
+		background-color: #e53534
+	}
+
+	div.ui-slider.mietentscheid-slider {
+		margin-top: 32px;
+		margin-bottom: 32px
+	}
+
+	div.ui-slider-handle.mietentscheid-slider-handle {
+		top: -2.3em;
+		width: 5em;
+		height: 5em;
+		background-color: #e53534;
+		img {
+			width: 100%;
+		}
+	}
+
+	div.ui-slider-handle.mietentscheid-slider-handle.ui-state-active,
+	li.ui-tabs-tab.mietentscheid-tabs-tab {
+		border-bottom-color: #c5c5c5;
+		border-left-color: #c5c5c5;
+		border-right-color: #c5c5c5;
+		border-top-color: #c5c5c5
+	}
+
 div#tabs
 	ul
-		li
+		li.mietentscheid-tabs-tab
 			a(href="#tabs-1") Fragen
-		li
+		li.mietentscheid-tabs-tab
 			a(href="#tabs-2") Auswertung
-		li
+		li.mietentscheid-tabs-tab
 			a(href="#tabs-3") Fakten
 
 	div#tabs-1
-		p
+		pv
 			label(for="anzahlPersonen") Anzahl Personen im Haushalt: 
 			input#anzahlPersonen(type="text" value="1")
-			div#anzahlPersonenSlider
+			div#anzahlPersonenSlider.mietentscheid-slider
+				div.ui-slider-handle.mietentscheid-slider-handle
+					img(src="SliderTransparent.png")
 
 		p
 			label(for="einkommen") Gesamteinkommen Haushalt:
 			input#einkommen(type="text" value="0 €")
-			div#einkommenSlider
+			div#einkommenSlider.mietentscheid-slider
+				div.ui-slider-handle.mietentscheid-slider-handle
+					img(src="SliderTransparent.png")
 
 		p
 			button#weiter-1(class="ui-button") Weiter
