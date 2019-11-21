@@ -4,23 +4,28 @@ layout:	mietentscheid-stuttgart.pug
 
 script(language="JavaScript" src="wohnberechtigung.js")
 style.
+	// minimal height of the tab element
 	div#tabs {
-		min-height: 275px
+		min-height: 610px
 	}
 
+	// keep space between labels and input element
 	div#tabs input,span {
 		margin-left: 15px
 	}
 
+	// font formatting of the resulting calculator text
 	span.mietentscheid-result {
 		font-size: 96px;
 		font-weight: bold
 	}
 
+	// adapt tablink color to mietentscheid
 	li.ui-tabs-active.mietentscheid-tabs-tab {
 		background-color: #e53534
 	}
 
+	// adapt mietentscheid-styled slider
 	div.ui-slider.mietentscheid-slider {
 		margin-top: 32px;
 		margin-bottom: 32px
