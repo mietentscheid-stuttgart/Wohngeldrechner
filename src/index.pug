@@ -12,6 +12,11 @@ style.
 		margin-left: 15px
 	}
 
+	span.mietentscheid-result {
+		font-size: 96px;
+		font-weight: bold
+	}
+
 	li.ui-tabs-active.mietentscheid-tabs-tab {
 		background-color: #e53534
 	}
@@ -67,13 +72,11 @@ div#tabs
 			button#weiter-1(class="ui-button") Weiter
 
 	div#tabs-2
-		p
-			input#sozialWohnung(type="checkbox" disabled)
-			span Recht auf eine Sozialwohnung
-		p
-			input#wohnungMittleresEinkommen(type="checkbox" disabled)
-			span Recht auf eine geförderte Wohnung für mittlere Einkommen
-
+		p Hast Du Anrecht auf eine Sozialwohnung?
+		span#sozialWohnung.mietentscheid-result
+		p(style="height:64px")
+		p Hast Du Anrecht auf eine geförderte Wohnung für mittlere Einkommen?
+		span#wohnungMittleresEinkommen.mietentscheid-result
 		p
 			button#weiter-2(class="ui-button") Weiter
 
@@ -103,8 +106,15 @@ script(language="JavaScript").
 			var wohnungMittleresEinkommen = new WohnungMittleresEinkommen2020(anzahlPersonen, einkommen);
 
 			// update checkboxes according to result
-			$( "#sozialWohnung" ).prop( "checked", sozialWohnung.istBerechtigt() );			
-			$( "#wohnungMittleresEinkommen" ).prop( "checked", wohnungMittleresEinkommen.istBerechtigt() );
+			if (sozialWohnung.istBerechtigt())
+				$( "#sozialWohnung" ).text("Ja");
+			else
+				$( "#sozialWohnung" ).text("Nein");
+				
+			if (wohnungMittleresEinkommen.istBerechtigt())
+				$( "#wohnungMittleresEinkommen" ).text("Ja");
+			else
+				$( "#wohnungMittleresEinkommen" ).text("Nein");
 		}
 
 		// plot

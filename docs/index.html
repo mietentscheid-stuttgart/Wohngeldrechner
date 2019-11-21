@@ -85,6 +85,11 @@ div#tabs input,span {
 	margin-left: 15px
 }
 
+span.mietentscheid-result {
+	font-size: 96px;
+	font-weight: bold
+}
+
 li.ui-tabs-active.mietentscheid-tabs-tab {
 	background-color: #e53534
 }
@@ -111,7 +116,7 @@ li.ui-tabs-tab.mietentscheid-tabs-tab {
 	border-right-color: #c5c5c5;
 	border-top-color: #c5c5c5
 }
-</style><div id="tabs"><ul><li class="mietentscheid-tabs-tab"><a href="#tabs-1">Fragen</a></li><li class="mietentscheid-tabs-tab"><a href="#tabs-2">Auswertung</a></li><li class="mietentscheid-tabs-tab"><a href="#tabs-3">Fakten</a></li></ul><div id="tabs-1"><pv><label for="anzahlPersonen">Anzahl Personen im Haushalt: </label><input id="anzahlPersonen" type="text" value="1"/><div class="mietentscheid-slider" id="anzahlPersonenSlider"><div class="ui-slider-handle mietentscheid-slider-handle"><img src="SliderTransparent.png"/></div></div></pv><p><label for="einkommen">Jahresbruttoeinkommen:</label><input id="einkommen" type="text" value="0 €"/><div class="mietentscheid-slider" id="einkommenSlider"><div class="ui-slider-handle mietentscheid-slider-handle"><img src="SliderTransparent.png"/></div></div></p><p><button class="ui-button" id="weiter-1">Weiter</button></p></div><div id="tabs-2"><p><input id="sozialWohnung" type="checkbox" disabled="disabled"/><span>Recht auf eine Sozialwohnung</span></p><p><input id="wohnungMittleresEinkommen" type="checkbox" disabled="disabled"/><span>Recht auf eine geförderte Wohnung für mittlere Einkommen</span></p><p><button class="ui-button" id="weiter-2">Weiter</button></p></div><div id="tabs-3"><p><h3>Fakten</h3><div id="plot"></div><span>Quelle: </span><a href="https://www.stuttgarter-nachrichten.de/inhalt.sozialmietwohnungen-in-stuttgart-stadt-stuttgart-lockert-vorgaben-fuer-vermieter.42647419-19b0-45e5-a830-65797e398fde.html">Stuttgarter Nachrichten</a></p></div></div><script language="JavaScript">function einkommenInEuro(value) {
+</style><div id="tabs"><ul><li class="mietentscheid-tabs-tab"><a href="#tabs-1">Fragen</a></li><li class="mietentscheid-tabs-tab"><a href="#tabs-2">Auswertung</a></li><li class="mietentscheid-tabs-tab"><a href="#tabs-3">Fakten</a></li></ul><div id="tabs-1"><pv><label for="anzahlPersonen">Anzahl Personen im Haushalt: </label><input id="anzahlPersonen" type="text" value="1"/><div class="mietentscheid-slider" id="anzahlPersonenSlider"><div class="ui-slider-handle mietentscheid-slider-handle"><img src="SliderTransparent.png"/></div></div></pv><p><label for="einkommen">Jahresbruttoeinkommen:</label><input id="einkommen" type="text" value="0 €"/><div class="mietentscheid-slider" id="einkommenSlider"><div class="ui-slider-handle mietentscheid-slider-handle"><img src="SliderTransparent.png"/></div></div></p><p><button class="ui-button" id="weiter-1">Weiter</button></p></div><div id="tabs-2"><p>Hast Du Anrecht auf eine Sozialwohnung?</p><span class="mietentscheid-result" id="sozialWohnung"></span><p style="height:64px"></p><p>Hast Du Anrecht auf eine geförderte Wohnung für mittlere Einkommen?</p><span class="mietentscheid-result" id="wohnungMittleresEinkommen"></span><p><button class="ui-button" id="weiter-2">Weiter</button></p></div><div id="tabs-3"><p><h3>Fakten</h3><div id="plot"></div><span>Quelle: </span><a href="https://www.stuttgarter-nachrichten.de/inhalt.sozialmietwohnungen-in-stuttgart-stadt-stuttgart-lockert-vorgaben-fuer-vermieter.42647419-19b0-45e5-a830-65797e398fde.html">Stuttgarter Nachrichten</a></p></div></div><script language="JavaScript">function einkommenInEuro(value) {
 	var f = parseInt(value);
 	return f + " €";
 }
@@ -129,8 +134,15 @@ $( function() {
 		var wohnungMittleresEinkommen = new WohnungMittleresEinkommen2020(anzahlPersonen, einkommen);
 
 		// update checkboxes according to result
-		$( "#sozialWohnung" ).prop( "checked", sozialWohnung.istBerechtigt() );			
-		$( "#wohnungMittleresEinkommen" ).prop( "checked", wohnungMittleresEinkommen.istBerechtigt() );
+		if (sozialWohnung.istBerechtigt())
+			$( "#sozialWohnung" ).text("Ja");
+		else
+			$( "#sozialWohnung" ).text("Nein");
+			
+		if (wohnungMittleresEinkommen.istBerechtigt())
+			$( "#wohnungMittleresEinkommen" ).text("Ja");
+		else
+			$( "#wohnungMittleresEinkommen" ).text("Nein");
 	}
 
 	// plot
