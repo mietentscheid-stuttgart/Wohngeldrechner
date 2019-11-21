@@ -51,7 +51,7 @@ class WohnungStatistiken {
 		this.titel =	[ "Mieterhaushalte in Stuttgart",
 				"Förderfähige Haushalte\n(Wohnberechtigungsschein)",
 				"Ausgestellte Wohnberechtigungsscheine\n(2016)",
-				"Tatsächlich neu bezogene\niSozialwohnungen (2016)" ];
+				"Tatsächlich neu bezogene\nSozialwohnungen (2016)" ];
 		
 	}
 }
