@@ -6,7 +6,7 @@
   "scripts": {
     "install": "node node_modules/bower/bin/bower install",
     "build": "node index.js",
-    "build:nodemon": "nodemon -e js,css,html,pug -w src -w layouts index.js",
+    "build:nodemon": "nodemon -e js,css,html,pug -w src -w layouts -w index.js -w server.js server.js",
     "dist:ghpages": "node index.js && ./deploy-gh-pages.sh \"npm run-script dist:ghpages\""
   },
   "repository": {
@@ -21,8 +21,10 @@
   "homepage": "https://github.com/mietentscheid-stuttgart/Wohngeldrechner#readme",
   "dependencies": {
     "bower": "^1.8.8",
+    "express": "^4.17.1",
     "jstransformer-pug": "^0.3.0",
     "metalsmith": "^2.3.0",
+    "metalsmith-beautify": "^0.2.0",
     "metalsmith-layouts": "^2.3.1",
     "metalsmith-pug": "^2.0.0",
     "nodemon": "^1.19.4"

@@ -2,20 +2,16 @@
 layout:	layout.pug
 ---
 
-link(rel="stylesheet" href="bower_components/jquery-ui/themes/base/jquery-ui.min.css")
-link(rel="stylesheet" href="bower_components/jqplot-bower/dist/jquery.jqplot.min.css")
-
-link(rel="stylesheet" href="wohnberechtigung-ui.css")
-
-script(language="JavaScript" src="bower_components/jquery/dist/jquery.min.js")
-script(language="JavaScript" src="bower_components/jquery-ui/jquery-ui.min.js")
+script(language="JavaScript" src="/wohnberechtigungsschein-rechner/insertcss.js")
+script(language="JavaScript" src="/wohnberechtigungsschein-rechner/bower_components/jquery/dist/jquery.min.js")
+script(language="JavaScript" src="/wohnberechtigungsschein-rechner/bower_components/jquery-ui/jquery-ui.min.js")
 	
-script(language="JavaScript" src="bower_components/jqplot-bower/dist/jquery.jqplot.min.js")
-script(language="JavaScript" src="bower_components/jqplot-bower/dist/plugins/jqplot.barRenderer.min.js")
-script(language="JavaScript" src="bower_components/jqplot-bower/dist/plugins/jqplot.categoryAxisRenderer.min.js")
-script(language="JavaScript" src="bower_components/jqplot-bower/dist/plugins/jqplot.pointLabels.min.js")
+script(language="JavaScript" src="/wohnberechtigungsschein-rechner/bower_components/jqplot-bower/dist/jquery.jqplot.min.js")
+script(language="JavaScript" src="/wohnberechtigungsschein-rechner/bower_components/jqplot-bower/dist/plugins/jqplot.barRenderer.min.js")
+script(language="JavaScript" src="/wohnberechtigungsschein-rechner/bower_components/jqplot-bower/dist/plugins/jqplot.categoryAxisRenderer.min.js")
+script(language="JavaScript" src="/wohnberechtigungsschein-rechner/bower_components/jqplot-bower/dist/plugins/jqplot.pointLabels.min.js")
 
-script(language="JavaScript" src="wohnberechtigung.js")
+script(language="JavaScript" src="/wohnberechtigungsschein-rechner/wohnberechtigung.js")
 div#tabs
 	ul
 		li.mietentscheid-tabs-tab
@@ -31,14 +27,14 @@ div#tabs
 			input#anzahlPersonen(type="text" value="1")
 			div#anzahlPersonenSlider.mietentscheid-slider
 				div.ui-slider-handle.mietentscheid-slider-handle
-					img(src="SliderTransparent.png")
+					img(src="/wohnberechtigungsschein-rechner/SliderTransparent.png")
 
 		p
 			label(for="einkommen") Jahresbruttoeinkommen:
 			input#einkommen(type="text" value="0 €")
 			div#einkommenSlider.mietentscheid-slider
 				div.ui-slider-handle.mietentscheid-slider-handle
-					img(src="SliderTransparent.png")
+					img(src="/wohnberechtigungsschein-rechner/SliderTransparent.png")
 
 		p(style="height:64px")
 		p
@@ -61,5 +57,5 @@ div#tabs
 			span Quelle: 
 			a(href="https://www.stuttgarter-nachrichten.de/inhalt.sozialmietwohnungen-in-stuttgart-stadt-stuttgart-lockert-vorgaben-fuer-vermieter.42647419-19b0-45e5-a830-65797e398fde.html") Stuttgarter Nachrichten
 
-script(language="JavaScript" src="wohnberechtigung-ui.js")
+script(language="JavaScript" src="/wohnberechtigungsschein-rechner/wohnberechtigung-ui.js")
 
