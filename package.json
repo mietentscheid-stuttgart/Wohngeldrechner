@@ -7,7 +7,7 @@
     "install": "node node_modules/bower/bin/bower install",
     "build": "node index.js",
     "build:nodemon": "nodemon -e js,css,html,pug -w src -w layouts index.js",
-    "dist:ghpages": "node index.js && cp -r build/. docs/"
+    "dist:ghpages": "node index.js && ./deploy-gh-pages.sh \"npm run-script dist:ghpages\""
   },
   "repository": {
     "type": "git",
