@@ -1,4 +1,4 @@
-extends layout-with-js-dependencies.pug
+extends layout.pug
 
 block append defines
 	- htmlClasses += ' no-svg js canvas canvastext no-touch opacity' 
@@ -169,14 +169,6 @@ block body
 	div(id="oct-wrapper")
 		div(id="page")
 			block header
-				script(language="JavaScript" src="bower_components/jquery/dist/jquery.min.js")
-				script(language="JavaScript" src="bower_components/jquery-ui/jquery-ui.min.js")
-
-				script(language="JavaScript" src="bower_components/jqplot-bower/dist/jquery.jqplot.min.js")
-				script(language="JavaScript" src="bower_components/jqplot-bower/dist/plugins/jqplot.barRenderer.min.js")
-				script(language="JavaScript" src="bower_components/jqplot-bower/dist/plugins/jqplot.categoryAxisRenderer.min.js")
-				script(language="JavaScript" src="bower_components/jqplot-bower/dist/plugins/jqplot.pointLabels.min.js")
-
 				section(class="oct-head-bar")
 					div(class="container")
 						div(class="row d-md-none")

@@ -1,57 +1,21 @@
 ---
-layout:	layout-with-js-dependencies.pug
+layout:	layout.pug
 ---
 
-<!-- BEGIN - COPY&PASTE HTML CODE INTO WORDPRESS POST -->
+link(rel="stylesheet" href="bower_components/jquery-ui/themes/base/jquery-ui.min.css")
+link(rel="stylesheet" href="bower_components/jqplot-bower/dist/jquery.jqplot.min.css")
+
+link(rel="stylesheet" href="wohnberechtigung-ui.css")
+
+script(language="JavaScript" src="bower_components/jquery/dist/jquery.min.js")
+script(language="JavaScript" src="bower_components/jquery-ui/jquery-ui.min.js")
+	
+script(language="JavaScript" src="bower_components/jqplot-bower/dist/jquery.jqplot.min.js")
+script(language="JavaScript" src="bower_components/jqplot-bower/dist/plugins/jqplot.barRenderer.min.js")
+script(language="JavaScript" src="bower_components/jqplot-bower/dist/plugins/jqplot.categoryAxisRenderer.min.js")
+script(language="JavaScript" src="bower_components/jqplot-bower/dist/plugins/jqplot.pointLabels.min.js")
+
 script(language="JavaScript" src="wohnberechtigung.js")
-style.
-	/* minimal height of the tab element */
-	div#tabs {
-		min-height: 610px
-	}
-
-	/* keep space between labels and input element */
-	div#tabs input,span {
-		margin-left: 15px
-	}
-
-	/* font formatting of the resulting calculator text */
-	span.mietentscheid-result {
-		font-size: 96px;
-		font-weight: bold
-	}
-
-	/* adapt tablink color to mietentscheid */
-	li.ui-tabs-active.mietentscheid-tabs-tab {
-		background-color: #e53534
-	}
-
-	/* adapt mietentscheid-styled slider */
-	div.ui-slider.mietentscheid-slider {
-		margin-top: 32px;
-		margin-bottom: 32px
-	}
-
-	div.ui-slider-handle.mietentscheid-slider-handle {
-		top: -2.3em;
-		width: 5em;
-		height: 5em;
-		background-color: #e53534;
-	}
-
-	div.ui-slider-handle.mietentscheid-slider-handle img {
-		width: 100%;
-	}
-
-	/* correct border colors */
-	div.ui-slider-handle.mietentscheid-slider-handle.ui-state-active,
-	li.ui-tabs-tab.mietentscheid-tabs-tab {
-		border-bottom-color: #c5c5c5;
-		border-left-color: #c5c5c5;
-		border-right-color: #c5c5c5;
-		border-top-color: #c5c5c5
-	}
-
 div#tabs
 	ul
 		li.mietentscheid-tabs-tab
@@ -97,110 +61,5 @@ div#tabs
 			span Quelle: 
 			a(href="https://www.stuttgarter-nachrichten.de/inhalt.sozialmietwohnungen-in-stuttgart-stadt-stuttgart-lockert-vorgaben-fuer-vermieter.42647419-19b0-45e5-a830-65797e398fde.html") Stuttgarter Nachrichten
 
-script(language="JavaScript").
-	function einkommenInEuro(value) {
-		var f = parseInt(value);
-		return f + " €";
-	}
-
-	$( function() {
-		// calculator
-		function presentResults() {
-			var anzahlPersonen = parseInt( $( "#anzahlPersonen" ).val() );
-			var einkommen = parseInt( $( "#einkommen" ).val() );
-
-			if (isNaN(anzahlPersonen) || isNaN(einkommen))
-				return;
-
-			var sozialWohnung = new SozialWohnung2020(anzahlPersonen, einkommen);
-			var wohnungMittleresEinkommen = new WohnungMittleresEinkommen2020(anzahlPersonen, einkommen);
-
-			// update checkboxes according to result
-			if (sozialWohnung.istBerechtigt())
-				$( "#sozialWohnung" ).text("Ja");
-			else
-				$( "#sozialWohnung" ).text("Nein");
-				
-			if (wohnungMittleresEinkommen.istBerechtigt())
-				$( "#wohnungMittleresEinkommen" ).text("Ja");
-			else
-				$( "#wohnungMittleresEinkommen" ).text("Nein");
-		}
-
-		// plot
-		function presentPlot() {
-			var statistik = new WohnungStatistiken();
-
-			$.jqplot.config.enablePlugins = true;
-			$.jqplot('plot', [statistik.anzahl], {
-				seriesDefaults:	{
-					renderer: $.jqplot.BarRenderer,
-					pointLabels: { show: true }
-				},
-				axes: {
-					xaxis: {
-						renderer: $.jqplot.CategoryAxisRenderer,
-						min:	0,
-						max:	5,
-						ticks:	statistik.titel
-					}
-				}
-			} );
-		}
-
-		// tab 1 controls
-		function linkInputToSlider(inputId, sliderId, defaultValue, formatValue = (v) => v) {
-			$( "#" + sliderId ).slider( "option", "slide", function( event, ui ) {
-				// apply slider value to input
-				$( "#" + inputId ).val( formatValue(ui.value) );
-			});
-
-			// initialize slider with input value
-			$( "#" + sliderId ).slider( "option", "value", parseInt( $( "#" + inputId ).val() ) );
-
-			$( "#" + inputId ).change( function( event ) {
-				// parse and validate value
-				var value = parseInt( $( "#" + inputId ).val() )
-				if (isNaN(value) || value < 0)
-					value = defaultValue;
-
-				// apply value to input and slider
-				$( "#" + inputId ).val( formatValue(value) )
-				$( "#" + sliderId ).slider( "option", "value", value );
-			} );
-
-		}
-
-		$( "#anzahlPersonenSlider" ).slider({
-			value:	1,
-			min:	1,
-			max:	5,
-			step:	1
-		});
-		linkInputToSlider("anzahlPersonen", "anzahlPersonenSlider", 1);
-
-		$( "#einkommenSlider" ).slider({
-			value:	0,
-			min:	0,
-			max:	100000,
-			step:	100,
-		});
-		linkInputToSlider("einkommen", "einkommenSlider", 0, (v) => v + " €");
-
-		// tabs and buttons
-		$( "#tabs" ).tabs();
-		$( "#tabs" ).on( "tabsactivate", function( event, ui ) {
-			if (ui.newPanel[0].id == "tabs-2")
-				presentResults();
-			if (ui.newPanel[0].id == "tabs-3")
-				presentPlot();
-		});
-		$( "#weiter-1" ).click( function() {
-			$( "#tabs" ).tabs( "option", "active", 1 );
-		});
-		$( "#weiter-2" ).click( function() {
-			$( "#tabs" ).tabs( "option", "active", 2 );
-		});
-	} );
-<!-- END - COPY&PASTE HTML CODE INTO WORDPRESS POST -->
+script(language="JavaScript" src="wohnberechtigung-ui.js")
 
