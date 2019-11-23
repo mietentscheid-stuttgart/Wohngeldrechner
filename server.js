@@ -1,10 +1,14 @@
+var build = require('./build');
+var config = require('./config-dev');
 var express = require('express');
+
 var app = express();
 
-app.use(express.static('.build/'))
-
-app.listen(3000, function () {
-  console.log('HTTP server listening on port 8080!');
-});
-
-require('./index')
+if (require.main === module) {
+	build.build().then( (v) => {
+		app.use(express.static('build'))
+		app.listen(config.http.port, function () {
+		  console.log('HTTP server listening on port ' + config.http.port);
+		});
+	} );
+}

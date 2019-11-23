@@ -13,22 +13,17 @@ npm install
 npm run-script build
 ```
 
-4.
-```
-firefox build/index.html
-```
-
 ## Developement
-1. Webseite bei Dateiänderung automatisch in *build/* neu erzeugen
+1. Webseite bei Dateiänderung automatisch erzeugen & auf Port 8080 bereitstellen
 ```
 npm run-script build:nodemon
 ```
 
 2. Änderungen vornehmen
 
-3.
+3. Webseite anzeigen
 ```
-firefox build/index.html
+firefox http://localhost:8080
 ```
 oder im bereits offenen Browser Aktualisieren
 
