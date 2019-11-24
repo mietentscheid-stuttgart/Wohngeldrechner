@@ -22,9 +22,6 @@ module.exports.build = function () {
 			.build(function(err, files) {
 				if (err) { reject(err); throw err; }
 
-				// make wp-post.html usable in github pages, too
-				fs.symlink('.', path.join(config.buildRoot, 'wohnberechtigungsschein-rechner'), function(err) { if (err) { throw err; } });
-
 				// copy assets into build dir
 				[
 					{ source: path.join('node_modules', 'jquery', 'dist'),	target: path.join('libs', 'jquery'),			name: 'jquery.min.js' },
