@@ -21,14 +21,14 @@ li.ui-tabs-active.mietentscheid-tabs-tab {
 
 /* adapt mietentscheid-styled slider */
 div.ui-slider.mietentscheid-slider {
-	margin-top: 32px;
-	margin-bottom: 32px
+	margin-top: 1.5em;
+	margin-bottom: 1.5em;
 }
 
 div.ui-slider-handle.mietentscheid-slider-handle {
-	top: -2.3em;
-	width: 5em;
-	height: 5em;
+	top: -1.4em;
+	width: 3em;
+	height: 3em;
 	background-color: #e53534;
 }
 
