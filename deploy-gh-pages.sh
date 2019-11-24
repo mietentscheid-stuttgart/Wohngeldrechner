@@ -30,6 +30,9 @@ git checkout gh-pages && (
 	mv .branch-backup/src/bower_components ./src/
 	rmdir .branch-backup/src
 	rmdir .branch-backup
+
+	git push
+	git pull
 )
 
 # switch back to previus branch
