@@ -4,7 +4,6 @@
   "description": "Mietentscheid Stuttgart - Wohngeldrechner",
   "main": "build.js",
   "scripts": {
-    "install": "node node_modules/bower/bin/bower install",
     "build": "node build.js",
     "build:nodemon": "nodemon -e js,css,html,pug -w src -w layouts -w build.js build.js",
     "start": "node server.js",
