@@ -14,14 +14,19 @@ npm run-script build
 ```
 
 ## Developement
-1. Webseite bei Dateiänderung automatisch erzeugen & auf Port 8080 bereitstellen
+1. Webseite bei Dateiänderung automatisch erzeugen
 ```
 npm run-script build:nodemon
 ```
 
-2. Änderungen vornehmen
+3. Webserver auf Port 8080 starten
+```
+npm run-script start
+```
 
-3. Webseite anzeigen
+4. Änderungen vornehmen
+
+5. Webseite anzeigen
 ```
 firefox http://localhost:8080
 ```
