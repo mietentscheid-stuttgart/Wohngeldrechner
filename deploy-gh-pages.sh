@@ -10,15 +10,18 @@ fi
 # switch into gh-pages branch
 CURRENTBRANCH="$( git rev-parse --abbrev-ref HEAD )"
 git checkout gh-pages && (
-	# rescue npm modules which are not part of any commits
+	# rescue npm modules and build which are not part of any commits
 	mkdir .branch-backup
 	mv node_modules .branch-backup/
 	mv package-lock.json .branch-backup/
+	mv build .branch-backup/
+
+	# cleanup old page data
+	rm -rf /*
 
 	# install build results in branch root and commit
-	mv build/* ./
+	mv .branch-backup/build/* ./
 	# make wp-post.html work in gh-pages
-	rm -rf wohnberechtigungsschein-rechner
 	mkdir wohnberechtigungsschein-rechner
 	pushd wohnberechtigungsschein-rechner
 	ln -s ../* ./
@@ -32,6 +35,7 @@ git checkout gh-pages && (
 	rm -rf ./*
 	mv .branch-backup/node_modules ./
 	mv .branch-backup/package-lock.json ./
+	rmdir .branch-backup/build
 	rmdir .branch-backup
 
 	git push
