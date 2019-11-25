@@ -11,6 +11,7 @@ fi
 CURRENTBRANCH="$( git rev-parse --abbrev-ref HEAD )"
 git checkout gh-pages && (
 	# rescue npm modules and build which are not part of any commits
+	rm -rf .branch-backup
 	mkdir .branch-backup
 	mv node_modules .branch-backup/
 	mv package-lock.json .branch-backup/
