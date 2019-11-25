@@ -21,8 +21,6 @@
   },
   "homepage": "https://github.com/mietentscheid-stuttgart/Wohngeldrechner#readme",
   "dependencies": {
-    "express": "^4.17.1",
-    "ftp-deploy": "^2.3.6",
     "jqplot": "github:jqPlot/jqPlot#1.0.9",
     "jquery": "^3.4.1",
     "jquery-ui-dist": "^1.12.1",
@@ -32,5 +30,9 @@
     "metalsmith-layouts": "^2.3.1",
     "metalsmith-pug": "^2.0.0",
     "nodemon": "^1.19.4"
+  },
+  "devDependencies": {
+    "express": "^4.17.1",
+    "ftp-deploy": "^2.3.6"
   }
 }
