@@ -17,6 +17,11 @@ git checkout gh-pages && (
 	mv package-lock.json .branch-backup/
 	mv src/bower_components .branch-backup/src/
 
+	# make wp-post.html work in gh-pages
+	mkdir build/wohnberechtigungsschein-rechner
+	ln -s build/* build/wohnberechtigungsschein-rechner/
+	rm build/wohnberechtigungsschein-rechner/wohnberechtigungsschein-rechner
+
 	# install build results in branch root and commit
 	mv build/* ./
 	git add *
