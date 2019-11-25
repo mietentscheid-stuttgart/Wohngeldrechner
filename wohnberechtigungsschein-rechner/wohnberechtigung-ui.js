@@ -1,0 +1,1 @@
+build/wohnberechtigung-ui.js
