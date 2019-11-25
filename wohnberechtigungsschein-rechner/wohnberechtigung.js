@@ -1,1 +1,1 @@
-wohnberechtigung.js
+../wohnberechtigung.js

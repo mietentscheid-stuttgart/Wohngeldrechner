@@ -1,1 +1,1 @@
-wohnberechtigung-ui.js
+../wohnberechtigung-ui.js
