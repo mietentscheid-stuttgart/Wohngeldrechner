@@ -8,7 +8,7 @@ then
 fi
 
 # switch into gh-pages branch
-CURRENTBRANCH="$( git branch --show-current )"
+CURRENTBRANCH="$( git rev-parse --abbrev-ref HEAD )"
 git checkout gh-pages && (
 	# rescue npm and bower modules which are not part of any commits
 	mkdir .branch-backup
