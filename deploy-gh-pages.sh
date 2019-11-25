@@ -18,6 +18,7 @@ git checkout gh-pages && (
 	# install build results in branch root and commit
 	mv build/* ./
 	# make wp-post.html work in gh-pages
+	rm -rf wohnberechtigungsschein-rechner
 	mkdir wohnberechtigungsschein-rechner
 	ln -s * wohnberechtigungsschein-rechner/
 	rm wohnberechtigungsschein-rechner/wohnberechtigungsschein-rechner
