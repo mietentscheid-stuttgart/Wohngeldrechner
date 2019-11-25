@@ -20,8 +20,10 @@ git checkout gh-pages && (
 	# make wp-post.html work in gh-pages
 	rm -rf wohnberechtigungsschein-rechner
 	mkdir wohnberechtigungsschein-rechner
-	ln -s * wohnberechtigungsschein-rechner/
-	rm wohnberechtigungsschein-rechner/wohnberechtigungsschein-rechner
+	cd wohnberechtigungsschein-rechner
+	ln -s ../* ./
+	rm wohnberechtigungsschein-rechner
+	cd ,,
 
 	git add *
 	git commit -m "$COMMENT"
