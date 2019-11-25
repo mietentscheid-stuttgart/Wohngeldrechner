@@ -30,7 +30,6 @@ git checkout gh-pages && (
 
 	# cleanup and restore npm and bower modules
 	rm -rf ./*
-	mkdir src
 	mv .branch-backup/node_modules ./
 	mv .branch-backup/package-lock.json ./
 	rmdir .branch-backup
