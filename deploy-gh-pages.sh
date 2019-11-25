@@ -17,7 +17,7 @@ git checkout gh-pages && (
 	mv build .branch-backup/
 
 	# cleanup old page data
-	rm -rf /*
+	rm -rf ./*
 
 	# install build results in branch root and commit
 	mv .branch-backup/build/* ./
