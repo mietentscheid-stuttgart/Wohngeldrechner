@@ -17,13 +17,13 @@ git checkout gh-pages && (
 
 	# install build results in branch root and commit
 	mv build/* ./
-	git add *
-	git commit -m "$COMMENT"
-
 	# make wp-post.html work in gh-pages
 	mkdir wohnberechtigungsschein-rechner
 	ln -s * wohnberechtigungsschein-rechner/
 	rm wohnberechtigungsschein-rechner/wohnberechtigungsschein-rechner
+
+	git add *
+	git commit -m "$COMMENT"
 
 	# cleanup and restore npm and bower modules
 	rm -rf ./*
