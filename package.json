@@ -8,7 +8,7 @@
     "build:nodemon": "nodemon -e js,css,html,pug -w src -w layouts -w build.js build.js",
     "start": "node server.js",
     "deploy": "node deploy.js",
-    "deploy:ghpages": "node build.js && ./deploy-gh-pages.sh \"npm run-script dist:ghpages\""
+    "deploy:ghpages": "node build.js && bash deploy-gh-pages.sh \"npm run-script dist:ghpages\""
   },
   "repository": {
     "type": "git",
