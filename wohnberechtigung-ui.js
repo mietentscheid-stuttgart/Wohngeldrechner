@@ -77,6 +77,7 @@ $( function() {
 		max:	5,
 		step:	1
 	});
+	$( "#anzahlPersonenSlider .ui-slider.handle" ).draggable();
 	linkInputToSlider("anzahlPersonen", "anzahlPersonenSlider", 1);
 
 	$( "#einkommenSlider" ).slider({
@@ -85,6 +86,7 @@ $( function() {
 		max:	100000,
 		step:	100,
 	});
+	$( "#einkommenSlider .ui-slider.handle" ).draggable();
 	linkInputToSlider("einkommen", "einkommenSlider", 0, (v) => v + " €");
 
 	// tabs and buttons
