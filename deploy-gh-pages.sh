@@ -46,3 +46,7 @@ git checkout gh-pages && (
 # switch back to previus branch
 git checkout "$CURRENTBRANCH"
 git reset
+
+git submodule init
+git submodule update --recursive
+
