@@ -26,8 +26,9 @@ module.exports.build = function () {
 				[
 					{ source: path.join('node_modules', 'jquery', 'dist'),	target: path.join('libs', 'jquery'),			name: 'jquery.min.js' },
 
-					{ source: path.join('node_modules', 'jquery-ui-dist'),	target: path.join('libs', 'jquery-ui'),			name: 'jquery-ui.min.js' },
-					{ source: path.join('node_modules', 'jquery-ui-dist'),	target: path.join('libs', 'jquery-ui'),			name: 'jquery-ui.min.css' },
+					{ source: path.join('node_modules', 'jquery-ui-dist'),				target: path.join('libs', 'jquery-ui'),			name: 'jquery-ui.min.js' },
+					{ source: path.join('node_modules', 'jquery-ui-dist'),				target: path.join('libs', 'jquery-ui'),			name: 'jquery-ui.min.css' },
+					{ source: path.join('gitsubmodules', 'jquery-ui-touch-punch'),			target: path.join('libs', 'jquery-ui-touch-punch'),	name: 'jquery.ui.touch-punch.min.js' },
 
 					{ source: path.join('node_modules', 'jqplot', 'src'),			target: path.join('libs', 'jquery-jqplot'),		name: 'jquery.jqplot.js' },
 					{ source: path.join('node_modules', 'jqplot', 'src'),			target: path.join('libs', 'jquery-jqplot'),		name: 'jqplot.core.js' },
