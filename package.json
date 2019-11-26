@@ -6,6 +6,7 @@
   "scripts": {
     "build": "node build.js",
     "build:nodemon": "nodemon -e js,css,html,pug -w src -w layouts -w build.js build.js",
+    "install": "git submodule init && git submodule update --recursive",
     "start": "node server.js",
     "deploy": "node deploy.js",
     "deploy:ghpages": "node build.js && bash deploy-gh-pages.sh \"npm run-script dist:ghpages\""
