@@ -6,8 +6,8 @@ class SozialWohnung2020 {
 			2:	50300,
 			3:	59300,
 			4:	68300,
-			5:	77300
-		}
+			5:	77300,
+	}
 
 		this.anzahlPersonen = anzahlPersonen;
 		this.einkommen = einkommen;
@@ -46,12 +46,28 @@ class WohnungStatistiken {
 		this.anzahl = 	[ 209000, 
 				104500,
 				5873, 
-				736 ];
+				736
+				];
 
 		this.titel =	[ "Mieterhaushalte in Stuttgart",
-				"Förderfähige Haushalte\n(Wohnberechtigungsschein)",
-				"Ausgestellte Wohnberechtigungsscheine\n(2016)",
-				"Tatsächlich neu bezogene\nSozialwohnungen (2016)" ];
+				"Förderfähige Haushalte (Wohnberechtigungsschein)",
+				"Ausgestellte Wohnberechtigungsscheine (2016)",
+				"Tatsächlich neu bezogene Sozialwohnungen (2016)"
+				];
+
+		this.titelMobil =	[ "Mieterhaushalte Stuttgart (2016)",
+					"förderfähig",
+					"ausgestellte Wohnberechtigungsscheine",
+					"tatsächlich bezogen"
+					];
 		
+	}
+
+	auffuellenAufKWerte(k) {
+		for (var i=this.anzahl.length; i<k; i++) {
+			this.anzahl[i] = null;
+			this.titel[i] = " ";
+			this.titelMobil[i] = " ";
+		}
 	}
 }

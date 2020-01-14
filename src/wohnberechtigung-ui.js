@@ -4,6 +4,8 @@ function einkommenInEuro(value) {
 }
 
 $( function() {
+	var plotSelector = null;
+
 	// calculator
 	function presentResults() {
 		var anzahlPersonen = parseInt( $( "#anzahlPersonen" ).val() );
@@ -30,22 +32,38 @@ $( function() {
 	// plot
 	function presentPlot() {
 		var statistik = new WohnungStatistiken();
-
-		$.jqplot.config.enablePlugins = true;
-		$.jqplot('plot', [statistik.anzahl], {
+		
+		var jqplotOptions = {
 			seriesDefaults:	{
 				renderer: $.jqplot.BarRenderer,
 				pointLabels: { show: true }
 			},
 			axes: {
 				xaxis: {
+					tickRenderer: $.jqplot.CanvasAxisTickRenderer,
 					renderer: $.jqplot.CategoryAxisRenderer,
-					min:	0,
-					max:	5,
-					ticks:	statistik.titel
+					tickOptions: {
+					}
 				}
 			}
-		} );
+		};
+
+		var mediaQuery = window.matchMedia('(max-width: 520px)');
+		if (mediaQuery.matches) {
+			statistik.auffuellenAufKWerte(8);
+			jqplotOptions.axes.xaxis.ticks = statistik.titelMobil;
+			jqplotOptions.axes.xaxis.tickOptions.angle = 35;
+		} else {
+			statistik.auffuellenAufKWerte(6);
+			jqplotOptions.axes.xaxis.ticks = statistik.titel;
+			jqplotOptions.axes.xaxis.tickOptions.angle = 20;
+		}
+
+		if (plotSelector)
+			plotSelector.destroy();
+
+		$.jqplot.config.enablePlugins = true;
+		plotSelector = $.jqplot('plot', [statistik.anzahl], jqplotOptions);
 	}
 
 	// tab 1 controls

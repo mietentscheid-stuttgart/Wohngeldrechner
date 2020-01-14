@@ -52,6 +52,8 @@ module.exports.build = function () {
 					{ source: path.join('node_modules', 'jqplot', 'src'),			target: path.join('libs', 'jquery-jqplot'),		name: 'jqplot.effects.blind.js' },
 					{ source: path.join('node_modules', 'jqplot', 'src'),			target: path.join('libs', 'jquery-jqplot'),		name: 'jquery.jqplot.css' },
 					{ source: path.join('node_modules', 'jqplot', 'src', 'plugins'),	target: path.join('libs', 'jquery-jqplot', 'plugins'),	name: 'jqplot.barRenderer.js' },
+					{ source: path.join('node_modules', 'jqplot', 'src', 'plugins'),	target: path.join('libs', 'jquery-jqplot', 'plugins'),	name: 'jqplot.canvasAxisTickRenderer.js' },
+					{ source: path.join('node_modules', 'jqplot', 'src', 'plugins'),	target: path.join('libs', 'jquery-jqplot', 'plugins'),	name: 'jqplot.canvasTextRenderer.js' },
 					{ source: path.join('node_modules', 'jqplot', 'src', 'plugins'),	target: path.join('libs', 'jquery-jqplot', 'plugins'),	name: 'jqplot.categoryAxisRenderer.js' },
 					{ source: path.join('node_modules', 'jqplot', 'src', 'plugins'),	target: path.join('libs', 'jquery-jqplot', 'plugins'),	name: 'jqplot.pointLabels.js' }
 				].forEach( (asset) => {
